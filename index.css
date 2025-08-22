@@ -1,0 +1,453 @@
+:root {
+    --color-principal: #333;
+    --color-secundario: white;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    color: white;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 100px;
+}
+
+header .logo h1 {
+    font-size: 28px; 
+    margin-left: 20px;
+}
+
+header .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--color-principal);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+footer p{
+    font-size: 1rem;
+}
+
+footer .social a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer .social a:hover {
+    text-decoration: underline;
+}
+
+
+/* body */
+body::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Cambia la opacidad aquí */
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* Generales */
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 1.7rem;
+}
+
+.seccion {
+    padding: 80px 30px 30px;
+    background-color: var(--color-secundario);
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Inicio Section */
+#inicio {
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url("./images/inicio01.png") no-repeat center center;
+    background-size: cover;
+}
+
+#inicio .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#inicio .hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#inicio .btn {
+    display: inline-block;
+    background: #0d1b2a;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+#inicio .btn:hover {
+    background: #1b263b;
+}
+
+
+/* Servicios Section */
+#servicios {
+    text-align: center;
+}
+
+
+.servicios-card {
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+    transition: transform 0.3s; /* Efecto de hover */
+}
+
+.servicios-card:hover {
+    transform: scale(1.05); /* Aumentar ligeramente en hover */
+}
+
+.servicios-card img {
+    width: 100%; /* Hacer que la imagen ocupe todo el ancho de la tarjeta */
+    height: auto; /* Mantener proporciones */
+    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+}
+
+.servicios-card h3 {
+    font-size: 1.5rem; /* Tamaño del subtítulo */
+    margin: 15px 0; /* Espacio arriba y abajo del subtítulo */
+}
+
+.servicios-card p {
+    font-size: 1rem; /* Tamaño del texto */
+    color: #555; /* Color del texto */
+}
+
+
+/* productos section */
+.productos-seccion {
+    background-color: #eeeeee;
+}
+
+.producto-grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+  
+.tarjeta-producto {
+    /* width: 250px; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+  
+.tarjeta-producto:hover {
+    transform: scale(1.02);
+}
+
+.tarjeta-producto img{
+    height: 500px;
+}
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.6);
+    overflow: hidden; /* Evita el scroll en toda la pantalla */
+}
+.modal-contenido {
+    display: flex; /* Usamos flexbox para organizar la imagen y el contenido */
+    justify-content: space-between; /* Separar la imagen y el texto */
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px; /* Aumenté un poco el tamaño máximo */
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fadeIn 0.4s;
+    position: relative;
+}
+
+.modal img {
+    width: 40%; /* La imagen ocupará un 40% del espacio */
+    border-radius: 10px;
+    margin-bottom: 0;
+    object-fit: cover; /* Ajustamos la imagen para que no se deforme */
+}
+
+.modal .texto-producto {
+    width: 55%; /* El texto ocupará el 55% */
+    padding-left: 20px; /* Separación entre la imagen y el texto */
+}
+
+.modal .texto-producto h2 {
+    margin-top: 0;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #25D366; /* verde WhatsApp */
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe5d; /* verde más oscuro al pasar */
+    transform: scale(1.05);
+}
+
+.modal.mostrar {
+    display: flex; /* Esto permite que el contenido esté en fila */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .cerrar {
+    color: #aaa;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+
+.fondo-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.fondo-modal.mostrar {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contacto section */
+#contacto {
+    background-color: #e0e0e0; /* un gris más suave */
+    padding: 60px 20px;
+}
+
+#contacto h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Contenedor general */
+.contenido-contacto {
+    background: #fff; /* bloque blanco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Formulario */
+.form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+input, textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Botón */
+#contacto button {
+    padding: 12px;
+    background: linear-gradient(135deg, #4CAF50, #3e8e41);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#contacto button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #45a049, #367c39);
+}
+
+/* Redes sociales */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+}
+
+.social-links h3 {
+    width: 100%;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+}
+
+.social-links img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenido-contacto {
+        padding: 20px;
+    }
+    .form {
+        max-width: 100%;
+    }
+}
+
+
+
+
+/* Sección activa en el header */
+nav ul li a.active {
+    font-weight: bold;
+}
