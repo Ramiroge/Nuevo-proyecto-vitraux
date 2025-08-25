@@ -126,7 +126,7 @@ body::before {
     text-align: center;
     color: white;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                url("../images/inicio01.png") no-repeat center center;
+                url("../images/inicio01.webp") no-repeat center center;
     background-size: cover;
 }
 
