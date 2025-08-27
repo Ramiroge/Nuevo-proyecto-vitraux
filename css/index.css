@@ -1,6 +1,10 @@
 :root {
     --color-principal: #333;
     --color-secundario: white;
+    --color-productos: #eeeeee;
+    --color-contacto: #e0e0e0;
+    --color-fijo-principal: #333;
+    --color-fijo-secundario: white;
 }
 
 html {
@@ -8,6 +12,12 @@ html {
     scroll-padding-top: 120px;
 }
 
+html[data-theme="dark"]{
+    --color-principal: white;
+    --color-secundario: #333;
+    --color-productos: #333;
+    --color-contacto: #333;
+}
 
 /* Generales */
 h2 {
@@ -43,7 +53,7 @@ header {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 
-    color: white;
+    color: var(--color-fijo-secundario);
 }
 
 header .logo {
@@ -68,7 +78,6 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
     font-size: 18px;
 }
@@ -77,15 +86,82 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+nav ul li button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--color-fijo-secundario);
+  transition: transform 0.2s;
+}
+
+nav ul li button:hover {
+  transform: scale(1.2);
+}
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+/* Botón hamburguesa oculto en escritorio */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: var(--color-fijo-secundario);
+  cursor: pointer;
+  z-index: 1100; /* encima del sidebar */
+}
+
+/* Sidebar estilo */
+.acciones-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 40px 20px;
+
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.acciones-header nav ul {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.acciones-header nav ul li a {
+  font-size: 20px;
+  color: white;
+}
+
+/* Sidebar activo (visible) */
+.acciones-header.activo {
+  right: 0;
+}
+
+/* Responsive solo en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
 
 /* Footer */
 footer {
-    background-color: var(--color-principal);
-    color: white;
+    background-color: var(--color-fijo-principal);
+    color: var(--color-fijo-secundario);
     text-align: center;
     padding: 20px;
     position: relative;
     z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 footer p{
@@ -93,7 +169,7 @@ footer p{
 }
 
 footer .social a {
-    color: white;
+    color: var(--color-fijo-secundario);
     margin: 0 10px;
     text-decoration: none;
 }
@@ -111,7 +187,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Cambia la opacidad aquí */
     z-index: 1;
     pointer-events: none;
 }
@@ -124,7 +199,7 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: var(--color-fijo-secundario);
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                 url("../images/inicio01.webp") no-repeat center center;
     background-size: cover;
@@ -142,26 +217,26 @@ body::before {
 
 #inicio .btn {
     display: inline-block;
-    background: #0d1b2a;
-    color: white;
+    background: var(--color-fijo-principal);
+    color: var(--color-fijo-secundario);
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
 }
 #inicio .btn:hover {
-    background: #1b263b;
+    background: #2a2a2a;
 }
 
 
 /* Servicios Section */
 #servicios {
     text-align: center;
+    color: var(--color-principal);
 }
 
-
 .servicios-card {
-    border: 1px solid #ddd; /* Borde suave */
+    border: 1px solid var(--color-productos); /* Borde suave */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
     margin-bottom: 20px; /* Espacio entre tarjetas */
@@ -185,13 +260,14 @@ body::before {
 
 .servicios-card p {
     font-size: 1rem; /* Tamaño del texto */
-    color: #555; /* Color del texto */
+    color: var(--color-principal); /* Color del texto */
 }
 
 
 /* productos section */
 .productos-seccion {
-    background-color: #eeeeee;
+    background-color: var(--color-productos);
+    color: var(--color-principal);
 }
 
 .producto-grid {
@@ -231,11 +307,12 @@ body::before {
     backdrop-filter: blur(4px);
     background-color: rgba(0,0,0,0.6);
     overflow: hidden; /* Evita el scroll en toda la pantalla */
+    color: var(--color-principal);
 }
 .modal-contenido {
     display: flex; /* Usamos flexbox para organizar la imagen y el contenido */
     justify-content: space-between; /* Separar la imagen y el texto */
-    background-color: white;
+    background-color: var(--color-secundario);
     margin: auto;
     padding: 20px;
     border-radius: 15px;
@@ -267,7 +344,7 @@ body::before {
     display: inline-block;
     padding: 12px 20px;
     background-color: #25D366; /* verde WhatsApp */
-    color: #fff;
+    color: var(--color-fijo-secundario);
     font-weight: bold;
     text-decoration: none;
     border-radius: 8px;
@@ -316,7 +393,7 @@ body::before {
 
 /* Contacto section */
 #contacto {
-    background-color: #e0e0e0; /* un gris más suave */
+    background-color: var(--color-contacto);
     padding: 60px 20px;
 }
 
@@ -324,12 +401,12 @@ body::before {
     text-align: center;
     margin-bottom: 30px;
     font-size: 28px;
-    color: #333;
+    color: var(--color-principal);
 }
 
 /* Contenedor general */
 .contenido-contacto {
-    background: #fff; /* bloque blanco */
+    background: var(--color-secundario); /* bloque blanco */
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.1);
@@ -355,7 +432,7 @@ body::before {
 label {
     margin: 10px 0 5px;
     font-weight: bold;
-    color: #444;
+    color: var(--color-principal);
 }
 
 input, textarea {
@@ -381,7 +458,7 @@ textarea {
 #contacto button {
     padding: 12px;
     background: linear-gradient(135deg, #4CAF50, #3e8e41);
-    color: white;
+    color: var(--color-secundario);
     font-size: 16px;
     font-weight: bold;
     border: none;

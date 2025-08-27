@@ -30,5 +30,42 @@ document.addEventListener("scroll", function () {
     });
 });
 
+// Modo Nocturno
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('modo-btn');
+  if (!btn) return;
 
+  // Detectar preferencia del sistema
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('theme'); // 'dark' | 'light' | null
+  const initial = saved || (prefersDark ? 'dark' : 'light');
+
+  setTheme(initial);
+
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+  });
+
+  function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+});
+
+
+// Menu Hamburguesa
+const menuToggle = document.querySelector(".menu-toggle");
+const accionesHeader = document.querySelector(".acciones-header");
+
+menuToggle.addEventListener("click", () => {
+  accionesHeader.classList.toggle("activo");
+});
+
+document.querySelectorAll(".acciones-header a").forEach(link => {
+  link.addEventListener("click", () => {
+    accionesHeader.classList.remove("activo");
+  });
+});
 
